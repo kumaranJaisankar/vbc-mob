@@ -1,4 +1,4 @@
-package com.customer.newarchitecture.modules;
+package sparkradiuscustomerinfo.in.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

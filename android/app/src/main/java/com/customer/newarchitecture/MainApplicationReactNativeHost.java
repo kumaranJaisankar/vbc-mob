@@ -1,4 +1,4 @@
-package com.customer.newarchitecture;
+package sparkradiuscustomerinfo.in.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.customer.BuildConfig;
-import com.customer.newarchitecture.components.MainComponentsRegistry;
-import com.customer.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import sparkradiuscustomerinfo.in.BuildConfig;
+import sparkradiuscustomerinfo.in.newarchitecture.components.MainComponentsRegistry;
+import sparkradiuscustomerinfo.in.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

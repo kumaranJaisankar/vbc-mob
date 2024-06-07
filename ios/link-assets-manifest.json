@@ -1,0 +1,193 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "source/assets/fonts/Titillium-Bold.ttf",
+      "sha1": "b9c952639741f5b7479e1ff6d1561a3df7e8f83a"
+    },
+    {
+      "path": "source/assets/fonts/Titillium-Regular.ttf",
+      "sha1": "f59f9e4f3cbee981a5e6f58a279f9b9613f22599"
+    },
+    {
+      "path": "source/assets/fonts/Titillium-Semibold.ttf",
+      "sha1": "6b2c7b124cbf0aaeba48d57fb0fa19f2c6c69683"
+    },
+    {
+      "path": "source/assets/fonts/Titillium-Semibold1.ttf",
+      "sha1": "96569e2cfcc3a298bb1aea21103d0d1e3c7e2ed4"
+    },
+    {
+      "path": "source/assets/images/addcomplainticon.png",
+      "sha1": "f0318b7b17ccfdf8a7f43403e5c3a06636413e59"
+    },
+    {
+      "path": "source/assets/images/alert_icon.png",
+      "sha1": "04e31d964059c463a36dd3fb13d09deb8b2c4cf6"
+    },
+    {
+      "path": "source/assets/images/bcn_logo.png",
+      "sha1": "dbd471c75b5f20b70974c449af4c547cdadb39da"
+    },
+    {
+      "path": "source/assets/images/bellicon.png",
+      "sha1": "c03242363bf4bb777db86185ca595c905973e78c"
+    },
+    {
+      "path": "source/assets/images/billicon.png",
+      "sha1": "fd4689a67dba734a4a7df4ecb825c99d990e162c"
+    },
+    {
+      "path": "source/assets/images/camera_icon.png",
+      "sha1": "89eb0f07400e7644327162cb912f73af2693006e"
+    },
+    {
+      "path": "source/assets/images/cctvicon.png",
+      "sha1": "5882918fa5d9ab55191a8add445ef8bd8c937c5c"
+    },
+    {
+      "path": "source/assets/images/complaints.gif",
+      "sha1": "5aad7938d54ddad65d6b2fc6b2dfc6947903ad17"
+    },
+    {
+      "path": "source/assets/images/count1.png",
+      "sha1": "c96dd4661aff25f6e39b0bcd2550a78bb4f56a07"
+    },
+    {
+      "path": "source/assets/images/count2.png",
+      "sha1": "501f3d921484a000810db95d099538bac6a15138"
+    },
+    {
+      "path": "source/assets/images/count3.png",
+      "sha1": "f5219034c0a2a50befd38d96b15995142b81a841"
+    },
+    {
+      "path": "source/assets/images/count4.png",
+      "sha1": "2e3cb986c2379faacdb7b742b4576de035c30041"
+    },
+    {
+      "path": "source/assets/images/dashboard_user_icon.png",
+      "sha1": "229030868bb266735d2489767950a50d9c3591a3"
+    },
+    {
+      "path": "source/assets/images/docicon.png",
+      "sha1": "22abe1fff11bd62640fed74ec472195323b5e0cf"
+    },
+    {
+      "path": "source/assets/images/docicon1.png",
+      "sha1": "06efbec4b16e29d70b6c0c79f6f3309caa0a9e71"
+    },
+    {
+      "path": "source/assets/images/gallery.png",
+      "sha1": "f60fd1548e8eaa04ac4d4865241fe269509002e7"
+    },
+    {
+      "path": "source/assets/images/gallery_icon1.png",
+      "sha1": "ffe76a0b42d2dc8b7dd65eaa3d41ffd23ff451c8"
+    },
+    {
+      "path": "source/assets/images/graph.png",
+      "sha1": "5cecf4dd82c63aef9c5963a12e5ceacb08e34407"
+    },
+    {
+      "path": "source/assets/images/homeicon.png",
+      "sha1": "7ecbded54d08c5b58b1fa609e964eab0c07ab4cd"
+    },
+    {
+      "path": "source/assets/images/landing_image.png",
+      "sha1": "3ffc2f7341987e38b65c3a9fa1084c6da80dafe4"
+    },
+    {
+      "path": "source/assets/images/location_marker.png",
+      "sha1": "c9b98a961c3ddd31eb617011ad808fee556382e4"
+    },
+    {
+      "path": "source/assets/images/loggo.png",
+      "sha1": "c4df455d78d556476992cacf62f5ab6ebb663e0f"
+    },
+    {
+      "path": "source/assets/images/logo.png",
+      "sha1": "dbd471c75b5f20b70974c449af4c547cdadb39da"
+    },
+    {
+      "path": "source/assets/images/menuicon1.png",
+      "sha1": "baa547058891b69c6abe24f3a5426c24032535f7"
+    },
+    {
+      "path": "source/assets/images/menu_icon.png",
+      "sha1": "1978f7d4f6f1913a111a4dfb785139ee799550ca"
+    },
+    {
+      "path": "source/assets/images/moviesicon.png",
+      "sha1": "935dee6bed4a2d423606fc0b8f85b17da2c6efbb"
+    },
+    {
+      "path": "source/assets/images/nexticon.png",
+      "sha1": "de6cd7d068ddf11103547dfa1e6b29111eb2faf8"
+    },
+    {
+      "path": "source/assets/images/notificationicon.png",
+      "sha1": "33f5d2581c66cac15b40124c18d865701018010f"
+    },
+    {
+      "path": "source/assets/images/no_data_icon.png",
+      "sha1": "ca9e272c634560991287e85ed497a3fb8117d2df"
+    },
+    {
+      "path": "source/assets/images/paymenticon.png",
+      "sha1": "bc5f19518e732a42fd8d39f0eefdeb090b93745f"
+    },
+    {
+      "path": "source/assets/images/profileicon.png",
+      "sha1": "18c7e47e47ea10bb8178404a7de3d2f060be6796"
+    },
+    {
+      "path": "source/assets/images/referafriendimage.png",
+      "sha1": "0b0ea8354a4b1fd18ba0b1f82aa892002442091d"
+    },
+    {
+      "path": "source/assets/images/router1_icon.png",
+      "sha1": "dbaa0b81144fb86a9a534db0f42f0320446d5caa"
+    },
+    {
+      "path": "source/assets/images/router2_icon.png",
+      "sha1": "5daf8eae5f4c4927ecc2d3d329a940baa1b6b138"
+    },
+    {
+      "path": "source/assets/images/routericon.png",
+      "sha1": "aedd6b7f7a7d5467a435881902e7135b2f11feb3"
+    },
+    {
+      "path": "source/assets/images/service_icon.png",
+      "sha1": "e9c4798843aff2f4e7bdc3aba426f7cd4111b57f"
+    },
+    {
+      "path": "source/assets/images/shopicon.png",
+      "sha1": "87fb713836bf65ddaebd376b5b4e68fff3ccd9f7"
+    },
+    {
+      "path": "source/assets/images/skyline_logo.png",
+      "sha1": "28f0a3f4137757bcc0dbd4b060e2fb722c669aa2"
+    },
+    {
+      "path": "source/assets/images/user.png",
+      "sha1": "35a5c2c6263249a1362229a0de23be5f17547c10"
+    },
+    {
+      "path": "source/assets/images/user_icon.svg",
+      "sha1": "c619c4986eb16e9814d1f30a7b80cd72b5a5e24d"
+    },
+    {
+      "path": "source/assets/images/vbc_logo.png",
+      "sha1": "4da5b7b46d4c456fcbfd64a00a0588f0f2e23f4a"
+    },
+    {
+      "path": "source/assets/images/voipicon.png",
+      "sha1": "9a3b2ac41c96e5e76361f7dfb1216d6e831e3a67"
+    },
+    {
+      "path": "source/assets/images/wifiicon.png",
+      "sha1": "17cec25d3260266325ac8ae5f5d2322be5ad8792"
+    }
+  ]
+}

@@ -1,117 +1,182 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
-import type {Node} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
+  NavigationContainer,
+  useNavigation,
+  DefaultTheme,
+  DarkTheme as DrkTheme,
+} from '@react-navigation/native';
+import MainNavigator from './source/navigation/MainNavigator';
+import Toast from 'react-native-toast-message';
+import {
+  LogBox,
+  Linking,
+  Platform,
+  PermissionsAndroid,
+  Alert,
   useColorScheme,
-  View,
 } from 'react-native';
-
+import {store, persistor} from './source/redux/Store/Store';
+import {connect, Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import messaging from '@react-native-firebase/messaging';
+import notifee, {
+  AndroidImportance,
+  AndroidVisibility,
+  EventType,
+} from '@notifee/react-native';
+import {onDisplayNotification} from './source/notification/DisplayNotification';
+import 'react-native-gesture-handler';
+import AuthStack from './source/navigation/AuthStack';
 import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  MD3DarkTheme,
+  MD3LightTheme,
+  PaperProvider,
+  adaptNavigationTheme,
+} from 'react-native-paper';
+import lightColors from './source/themes/lightColors';
+import darkColors from './source/themes/darkColors';
+import {bindActionCreators} from 'redux';
+import AppProvider from './source/providers/AppProvider';
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+LogBox.ignoreLogs(['Remote debugger']);
+LogBox.ignoreLogs(['Setting a timer']);
+LogBox.ignoreLogs(['componentWillReceiveProps has']);
+LogBox.ignoreLogs(['VirtualizedLists should']);
+LogBox.ignoreLogs(['Failed prop type:']);
+LogBox.ignoreLogs(['Each child in a list should have a unique "key" prop.']);
+LogBox.ignoreLogs(['Require cycle']);
+LogBox.ignoreLogs([
+  `Can't perform a React state update on an unmounted component`,
+]);
+LogBox.ignoreLogs(['`new NativeEventEmitter()`']);
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  // const navigation = useNavigation();
+  const navigationRef = useRef(null);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  useEffect(() => {
+    const requestuserPermission = async () => {
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      );
+      const authStatus = await messaging().requestPermission();
+      const enabled =
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+      if (enabled) {
+        console.log('Authorization status:', authStatus);
+        await messaging().registerDeviceForRemoteMessages();
+        const token = await messaging().getToken();
+        console.log('Message token: ', token);
+      }
+    };
+    requestuserPermission();
+  }, []);
+
+  //Firebase cloud messaging function
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      onDisplayNotification(remoteMessage);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  // useEffect(() => {
+
+  // }, []);
+
+  useEffect(() => {
+    // Foreground event handler
+    const unsubscribe = notifee.onForegroundEvent(({type, detail}) => {
+      const {notification, pressAction} = detail;
+
+      if (type === EventType.DISMISSED) {
+        console.log('User dismissed notification', notification);
+      } else if (
+        type === EventType.ACTION_PRESS &&
+        pressAction.id === 'default'
+      ) {
+        console.log('User pressed notification', notification);
+      }
+    });
+
+    // Handle deep linking when the app is opened from a link
+    const handleDeepLink = async () => {
+      const url = await Linking.getInitialURL();
+      handleUrl(url);
+    };
+
+    const handleUrl = url => {
+      // Check if the app was opened by a deep link
+      if (url) {
+        // Handle the deep link here, e.g., navigate to the appropriate screen
+        console.log('Opened from deep link:', url);
+        navigationRef?.current?.navigate('PlanRenewal');
+      }
+    };
+
+    // Add event listener to handle incoming links
+    Linking.addEventListener('url', ({url}) => handleUrl(url));
+
+    // Check if the app was opened by a deep link when it starts
+    handleDeepLink();
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      unsubscribe();
+      // Linking.removeEventListener('url', handleUrl);
+    };
+  }, []);
+
+  const openAppStore = () => {
+    Linking.openURL(
+      'https://play.google.com/store/apps/details?id=sparkradiuscustomerinfo.in',
+    );
   };
 
+  const handleRenewalLink = () => {
+    // Replace 'your_custom_scheme://your_domain/planrenewal' with your actual deep link URL
+    const renewalUrl = 'vbccustomer://renewal';
+    Linking.canOpenURL(renewalUrl)
+      .then(supported => {
+        if (supported) {
+          Linking.openURL(renewalUrl);
+        } else {
+          openAppStore(); // Redirect to the Play Store if the app is not installed
+        }
+      })
+      .catch(err => console.error('An error occurred', err));
+  };
+  console.log('dshfjshdjkfhskjdf');
+  const navLightTheme = {
+    ...MD3LightTheme,
+    ...DefaultTheme,
+    colors: {...DefaultTheme.colors, ...lightColors.colors},
+  };
+  const navDarkTheme = {
+    ...MD3DarkTheme,
+    ...DrkTheme,
+    colors: {...DrkTheme.colors, ...darkColors.colors},
+  };
+  const lightTheme = {...MD3LightTheme, colors: lightColors.colors};
+  const darkTheme = {
+    ...MD3DarkTheme,
+    colors: darkColors.colors,
+  };
+  const colorTheme = useColorScheme();
+  const {LightTheme, DarkTheme} = adaptNavigationTheme({
+    reactNavigationLight: navLightTheme,
+    reactNavigationDark: navDarkTheme,
+  });
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <AppProvider />
+      </PersistGate>
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

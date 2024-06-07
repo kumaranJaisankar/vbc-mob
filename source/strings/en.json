@@ -1,0 +1,203 @@
+{
+  "app_name": {
+    "app_name": "Spark Radius"
+  },
+
+  "font": {
+    "text_fontsize": 16,
+    "header_fontsize": 18
+  },
+
+  "landingPage": {
+    "Welcome": "Welcome !",
+    "Login": "Login"
+  },
+
+  "Login": {
+    "EnterMobileNumber": "Enter username",
+    "EnterUsername": "Please enter username",
+    "EnterUsernamePass": "Please enter username and password",
+    "EnterUsernamePassLogin": "Enter username and password",
+    "SendingOTP": "Sending OTP...",
+    "VerifyingOTP": "Verifying OTP...",
+    "PleaseEnter": "Please enter the",
+    "EnterOtpVerify": "Enter OTP to verify",
+    "OtpVerify": "Verify OTP",
+    "didnotreceiveOtp": "Didn't receive the OTP?",
+    "resendnow": "Resend Now",
+    "resendotpcode": "Resend OTP in",
+    "seconds": "seconds",
+    "otpMessage": "We will send a OTP code to registered mobile number",
+    "Login": "Login",
+    "Mobileno": "Mobile No.",
+    "SendOtp": "Send OTP",
+    "Or": "Or",
+    "LoginWithUsername": "Login With Username",
+    "LoginWithPhone": "Login With OTP",
+    "Username": "Username",
+    "Password": "Password",
+    "enterotp": "Please Enter OTP",
+    "entervalidotp": "Please Enter Valid OTP"
+  },
+
+  "Dashboard": {
+    "LoadingDashboard": "Loading Dashboard...",
+    "PlanName": "PlanName",
+    "DownloadSpeed": "Download Speed",
+    "UploadSpeed": "Upload Speed",
+    "Validity": "Validity",
+    "PlanCost": "Plan Cost",
+    "Email": "Email",
+    "ExpiryDate": "Expiry Date",
+    "MB": "MB"
+  },
+
+  "TermsOfService": {
+    "TermsOfService": "Terms and Conditions",
+    "PrivacyPolicy": "Privacy Policy"
+  },
+
+  "Complaints": {
+    "Complaints": "Complaints",
+    "PrivacyPolicy": "Privacy Policy"
+  },
+
+  "KYC_Form": {
+    "Customer_KYC": "Customer KYC",
+    "KYC_Form": "KYC Form",
+    "Search_id": "Search with ID, Mobile, Email",
+    "Search": "Search Navigation...",
+    "Add_KYC_Form": "Add KYC Form",
+    "Update_KYC_Form": "Update KYC Form",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "Mobile_no": "Mobile Number",
+    "Email": "Email",
+    "Branch": "Branch",
+    "PersonalInfo": "Personal Information",
+    "PersonalDetails": "Personal Details",
+    "BillingAddress": "Billing Address",
+    "CurrentAddress": "Current Address",
+    "HNo": "H.No",
+    "Back": "Back",
+    "Next": "Next",
+    "Landmark": "Landmark",
+    "Street": "Street",
+    "LoadingLeads": "Loading Leads Data. Please wait...",
+    "City": "City",
+    "City_Town": "City/Town",
+    "Pincode": "Pincode",
+    "District": "District",
+    "State": "State",
+    "Country": "Country",
+    "PermanentAddress": "Permanent Address",
+    "SameBillingAddress": "Same as Current Address",
+    "ServicePlan": "Service Plan",
+    "All_Plans": "All Plans",
+    "ServiceDetails": "Service Details",
+    "Plan": "Plan",
+    "UploadSpeed": "Upload Speed",
+    "DownloadSpeed": "Download Speed",
+    "DataLimit": "Data Limit",
+    "PlanCost": "Plan Cost",
+    "PlanSgst": "Plan SGST",
+    "PlanCgst": "Plan CGST",
+    "TotalPlanCost": "Total Plan Cost",
+    "gstIn":"GSTIN",
+    "InstallationCharges": "Installation Charges",
+    "SecurityDesposite": "Security Desposite",
+    "Billing": "Billing",
+    "PlanType": "Plan Type",
+    "BillingDay": "Billing Day",
+    "DueDay": "Due Day",
+    "Notifications": "Notifications",
+    "Documents": "Documents",
+    "AadharNumber": "Aadhar Number",
+    "IDProof": "ID Proof",
+    "AddressProof": "Address Proof",
+    "DocumentAddMessage": "Add any address proof and click upload.",
+    "uploadProof": "Upload Proof",
+    "Signature": "Signature",
+    "Network": "Network",
+    "NAS": "NAS",
+    "OLT": "OLT",
+    "DPE": "DPE",
+    "CPE": "CPE",
+    "ModeOfPayment": "Mode of Payment",
+    "PaymentOption": "Payment Option",
+    "Camera": "Camera",
+    "Gallery": "Gallery",
+    "Close": "Close"
+  },
+
+  "NoData": {
+    "no_data": "No Data Found"
+  },
+
+  "Dialog": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "no": "No",
+    "yes": "Yes",
+    "add": "Add",
+    "submit": "Submit",
+    "send": "Send",
+    "save": "Save",
+    "retry": "Retry",
+    "refresh_message": "Do you want to refresh?",
+    "unable_to_process": "Unable process the request. Please try again",
+    "loading_data": "Loading Data. Please wait..."
+  },
+
+  "Assets": {
+    "Assets": "Assets",
+    "LoadingAssets": "Loading Assets Data. Please wait..."
+  },
+
+  "SessionHistory": {
+    "SessionHistory": "Session History",
+    "TotalSessions": "Total Sessions",
+    "Sessions": "Sessions",
+    "TotalDownload": "Total Download",
+    "Download": "Download",
+    "TotalUpload": "Total Upload",
+    "Upload": "Upload",
+    "TotalUsage": "Total Usage",
+    "Usage": "Usage",
+    "GB": "GB",
+    "Date": "Date",
+    "StTime": "St. Time",
+    "StartTime": "Start Time",
+    "EnTime": "En. Time",
+    "EndTime": "End Time",
+    "OnlineTime": "Online Time",
+    "TotalGB": "Total GB",
+    "UploadGB": "Upload GB",
+    "DownloadGB": "Download GB",
+    "SessionID": "Session ID",
+    "IPAddress": "IP Address",
+    "LoadingSessionHistory": "Loading Session History..."
+  },
+
+  "DataUsageHistory": {
+    "LoadingUsageHistory": "Loading Data Usage History...",
+    "DataUsageHistory": "Data Usage History",
+    "DayWise": "Day Wise",
+    "UploadGB": "Upload GB",
+    "DownloadGB": "Download GB"
+  },
+
+  "InvoiceHistory": {
+    "LoadingUsageHistory": "Loading Invoice History...",
+    "InvoiceHistory": "Invoice History",
+    "Date": "Date",
+    "Amount": "Amount",
+    "Invoice": "Invoice"
+  },
+  "Plan": {
+    "LoadingPlan": "Loading Customer Plan...",
+    "TimeUnit": "Months",
+    "DownSpeed": "MBPS",
+    "SingularTimeUnit": "Month"
+  }
+}

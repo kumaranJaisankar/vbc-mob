@@ -1,4 +1,4 @@
-package com.customer;
+package sparkradiuscustomerinfo.in;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,9 +9,11 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.customer.newarchitecture.MainApplicationReactNativeHost;
+import sparkradiuscustomerinfo.in.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.rumax.reactnative.pdfviewer.PDFViewPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -27,7 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
+          // packages.add(new PDFViewPackage(),new VectorIconsPackage());
           return packages;
         }
 
@@ -73,7 +75,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.customer.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("sparkradiuscustomerinfo.in.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

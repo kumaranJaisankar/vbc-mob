@@ -1,4 +1,4 @@
-package com.customer;
+package sparkradiuscustomerinfo.in;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

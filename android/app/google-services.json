@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "422678346410",
+    "project_id": "vbc-on-fiber",
+    "storage_bucket": "vbc-on-fiber.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422678346410:android:465101d5ba4bc93400eed3",
+        "android_client_info": {
+          "package_name": "sparkradiuscustomerinfo.in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARVNflenukG0le3YfYji_SvfefdyE1ug8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

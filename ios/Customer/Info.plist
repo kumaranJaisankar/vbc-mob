@@ -51,5 +51,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Titillium-Bold.ttf</string>
+		<string>Titillium-Regular.ttf</string>
+		<string>Titillium-Semibold.ttf</string>
+		<string>Titillium-Semibold1.ttf</string>
+	</array>
 </dict>
 </plist>
