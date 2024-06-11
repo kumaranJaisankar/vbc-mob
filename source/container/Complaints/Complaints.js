@@ -12,7 +12,12 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import {Button, TextInput} from 'react-native-paper';
+import {
+  Button,
+  Divider,
+  TextInput,
+  useTheme as useMDtheme,
+} from 'react-native-paper';
 import {Colors} from '../../commoncomponents/Colors';
 import Headerview from '../../commoncomponents/HeaderView1';
 import Toast from 'react-native-toast-message';
@@ -26,8 +31,11 @@ import RBSheet from 'react-native-raw-bottom-sheet';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import ComplaintsDetails from './ComplaintsDetails';
 import {Dropdown} from 'react-native-element-dropdown';
+import {useTheme} from '@react-navigation/native';
 
 const Complaints = ({navigation}) => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   const refRBSheet1 = useRef();
   const [isLoading, setLoading] = React.useState(false);
   const [catLoading, setCatLoading] = React.useState(false);
@@ -204,8 +212,14 @@ const Complaints = ({navigation}) => {
         <TouchableOpacity
           activeOpacity={0.9}
           onPress={getComplaintsData}
-          style={styles.loadMoreBtn}>
-          <Text style={styles.btnText}>Load More</Text>
+          style={[
+            styles.loadMoreBtn,
+            {backgroundColor: materialColor.primary},
+          ]}>
+          <Text
+            style={[styles.btnText, {color: materialColor.primaryContainer}]}>
+            Load More
+          </Text>
           {/* {isLoading ? (
             <ActivityIndicator color="white" style={{marginLeft: 8}} />
           ) : null} */}
@@ -215,13 +229,57 @@ const Complaints = ({navigation}) => {
 
     return null;
   };
+  const styles = StyleSheet.create({
+    footer: {
+      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+    },
+    loadMoreBtn: {
+      padding: 10,
+      backgroundColor: Colors.color_5E0F8B,
+      borderRadius: 10,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    btnText: {
+      color: '#ffffff',
+      fontSize: 16,
+      textAlign: 'center',
+      fontFamily: 'Titillium-Semibold',
+    },
+    dropdown: {
+      marginTop: 5,
+      borderWidth: 1,
+      borderRadius: 5,
+    },
+    icon: {
+      marginRight: 5,
+    },
+    placeholderStyle: {
+      fontFamily: 'Titillium-Semibold',
+      color: 'grey',
+      fontSize: 14,
+    },
+    selectedTextStyle: {
+      fontFamily: 'Titillium-Semibold',
+      color: color.text,
+      fontSize: 14,
+    },
+    iconStyle: {
+      width: 20,
+      height: 20,
+    },
+  });
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, backgroundColor: Colors.grey_F8F7FD}}>
+      <View style={{flex: 1, backgroundColor: color.background}}>
         <Headerview
           showHeader
           showRefreshIcon
-          showCommentPlusIcon
+          // showCommentPlusIcon
           title={strings('Complaints.Complaints')}
           onMenuClick={() => {
             navigation.openDrawer();
@@ -229,21 +287,54 @@ const Complaints = ({navigation}) => {
           onRefreshClicked={() => {
             getComplaintsDataOnRefreshClicked();
           }}
-          onAddClicked={() => {
-            getCategory();
-            refRBSheet1.current.open();
-          }}
+          // onAddClicked={() => {
+          //   getCategory();
+          //   refRBSheet1.current.open();
+          // }}
         />
 
         <View style={{flex: 1}}>
           <View style={{marginTop: -80}}>
             <View
               style={{
-                backgroundColor: Colors.white,
+                backgroundColor: materialColor.onSecondary,
                 borderRadius: 10,
                 padding: 20,
                 margin: 20,
               }}>
+              <TouchableOpacity
+                onPress={() => {
+                  getCategory();
+                  refRBSheet1.current.open();
+                }}
+                style={{
+                  borderWidth: 1,
+                  borderColor: 'rgba(0,0,0,0.2)',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+
+                  backgroundColor: color.primary,
+                  borderRadius: 100,
+                  padding: 12,
+                  flexDirection: 'row',
+                  marginBottom: 10,
+                }}>
+                <FontAwesome
+                  name="plus"
+                  size={20}
+                  color={materialColor.primaryContainer}
+                />
+                <Text
+                  style={{
+                    color: materialColor.primaryContainer,
+                    marginLeft: 5,
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                  }}>
+                  Add Complaint
+                </Text>
+              </TouchableOpacity>
+              <Divider />
               <View style={{flexDirection: 'column', justifyContent: 'center'}}>
                 {isDataAvailable ? (
                   <View>
@@ -259,7 +350,7 @@ const Complaints = ({navigation}) => {
                       ListFooterComponent={renderFooter}
                       refreshControl={
                         <RefreshControl
-                          // refreshing={isLoading}
+                          refreshing={isLoading}
                           onRefresh={getComplaintsData}
                         />
                       }
@@ -277,16 +368,17 @@ const Complaints = ({navigation}) => {
         </View>
         <RBSheet
           ref={refRBSheet1}
+          closeOnPressBack={true}
+          draggable={true}
           closeOnDragDown={true}
           closeOnPressMask={false}
-          height={600}
+          dragOnContent={true}
+          height={550}
           customStyles={{
-            wrapper: {
-              backgroundColor: 'transparent',
-            },
             container: {
-              borderRadius: 20,
-              backgroundColor: '#ffffff',
+              borderTopEndRadius: 20,
+              borderTopLeftRadius: 20,
+              backgroundColor: materialColor.onSecondary,
               shadowColor: '#000',
               shadowOffset: {
                 width: 0,
@@ -297,10 +389,15 @@ const Complaints = ({navigation}) => {
               elevation: 20,
             },
             draggableIcon: {
-              backgroundColor: '#000',
+              backgroundColor: color.text,
             },
           }}>
           <View style={{padding: 20}}>
+            <TouchableOpacity
+              onPress={() => refRBSheet1.current.close()}
+              style={{justifyContent: 'center', alignItems: 'flex-end'}}>
+              <Text style={{color: color.notification}}>Cancel</Text>
+            </TouchableOpacity>
             <ScrollView>
               <TouchableOpacity activeOpacity={1}>
                 <View style={{flexDirection: 'row', marginTop: 5}}>
@@ -309,8 +406,9 @@ const Complaints = ({navigation}) => {
                       <Text
                         style={{
                           fontFamily: 'Titillium-Semibold',
-                          color: '#000000',
+                          color: color.text,
                           fontSize: 14,
+                          marginBottom: 5,
                         }}>
                         Complaint Type
                       </Text>
@@ -324,10 +422,18 @@ const Complaints = ({navigation}) => {
                       </Text>
                     </View>
                     <Dropdown
+                      activeColor={color.card}
                       style={[styles.dropdown]}
                       placeholderStyle={styles.placeholderStyle}
                       selectedTextStyle={styles.selectedTextStyle}
                       data={isCategoryData}
+                      itemTextStyle={{color: color.text}}
+                      confirmSelectItem={true}
+                      containerStyle={{
+                        backgroundColor: color.border,
+                        borderBottomEndRadius: 20,
+                        borderBottomLeftRadius: 20,
+                      }}
                       maxHeight={200}
                       labelField="category"
                       valueField="id"
@@ -358,8 +464,9 @@ const Complaints = ({navigation}) => {
                       <Text
                         style={{
                           fontFamily: 'Titillium-Semibold',
-                          color: '#000000',
+                          color: color.text,
                           fontSize: 14,
+                          marginBottom: 5,
                         }}>
                         Sub Complaint Type
                       </Text>
@@ -373,10 +480,17 @@ const Complaints = ({navigation}) => {
                       </Text>
                     </View>
                     <Dropdown
+                      activeColor={color.card}
                       style={[styles.dropdown]}
                       placeholderStyle={styles.placeholderStyle}
                       selectedTextStyle={styles.selectedTextStyle}
                       data={isSubCategoryData}
+                      itemTextStyle={{color: color.text}}
+                      containerStyle={{
+                        backgroundColor: color.border,
+                        borderBottomEndRadius: 20,
+                        borderBottomLeftRadius: 20,
+                      }}
                       maxHeight={200}
                       labelField="name"
                       valueField="id"
@@ -407,8 +521,9 @@ const Complaints = ({navigation}) => {
                       <Text
                         style={{
                           fontFamily: 'Titillium-Semibold',
-                          color: '#000000',
+                          color: color.text,
                           fontSize: 14,
+                          marginBottom: 5,
                         }}>
                         Notes
                       </Text>
@@ -433,7 +548,7 @@ const Complaints = ({navigation}) => {
                         fontFamily: 'Titillium-Semibold',
                         color: '#777777',
                         fontSize: 14,
-                        backgroundColor: Colors.white,
+                        backgroundColor: materialColor.onSecondary,
                         borderRadius: 5,
                         textAlignVertical: 'top',
                       }}
@@ -475,7 +590,7 @@ const Complaints = ({navigation}) => {
                   uppercase={false}
                   disabled={isLoading}
                   style={{
-                    backgroundColor: '#476DFC',
+                    backgroundColor: materialColor.primary,
                     marginTop: 30,
                   }}>
                   <Text
@@ -483,7 +598,7 @@ const Complaints = ({navigation}) => {
                       fontSize: 18,
                       fontFamily: 'Titillium-Semibold',
                       fontWeight: 'normal',
-                      color: Colors.white,
+                      color: materialColor.primaryContainer,
                     }}>
                     {isLoading ? 'Loading...' : 'Submit'}
                   </Text>
@@ -964,48 +1079,3 @@ const Complaints = ({navigation}) => {
 };
 
 export default Complaints;
-
-const styles = StyleSheet.create({
-  footer: {
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  loadMoreBtn: {
-    padding: 10,
-    backgroundColor: Colors.color_5E0F8B,
-    borderRadius: 10,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnText: {
-    color: '#ffffff',
-    fontSize: 16,
-    textAlign: 'center',
-    fontFamily: 'Titillium-Semibold',
-  },
-  dropdown: {
-    marginTop: 5,
-    borderWidth: 1,
-    borderRadius: 5,
-  },
-  icon: {
-    marginRight: 5,
-  },
-  placeholderStyle: {
-    fontFamily: 'Titillium-Semibold',
-    color: '#000000',
-    fontSize: 14,
-  },
-  selectedTextStyle: {
-    fontFamily: 'Titillium-Semibold',
-    color: '#000000',
-    fontSize: 14,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
-});

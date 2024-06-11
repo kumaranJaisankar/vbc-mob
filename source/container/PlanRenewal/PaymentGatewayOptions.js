@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import config from '../../apiwebservices/apiConfig';
+import {useTheme} from '@react-navigation/native';
 const PaymentGatewayOptions = props => {
+  const color = useTheme().colors;
   const {paymentGateways, selectedGateway, handleGatewayClick} = props;
 
   // Effect to handle initial selection
@@ -12,13 +14,13 @@ const PaymentGatewayOptions = props => {
     if (initialGateway && !selectedGateway) {
       handleGatewayClick(initialGateway);
     }
-    console.log(initialGateway,"initialGateway")
+    console.log(initialGateway, 'initialGateway');
   }, [paymentGateways, selectedGateway, handleGatewayClick]);
 
   return (
     <View style={styles.paymentGatewayOptions}>
       <Text style={styles.label}>
-        <Text style={{fontSize: 16}}>Payment Gateway :</Text>
+        <Text style={{fontSize: 16, color: color.text}}>Payment Gateway :</Text>
       </Text>
       <View style={styles.pcardContainer}>
         {paymentGateways?.map(gateway => (
@@ -31,17 +33,18 @@ const PaymentGatewayOptions = props => {
             onPress={() => handleGatewayClick(gateway)}>
             <Image
               source={{
-                uri: `${config.REACT_APP_API_URL_BILLING}/${gateway.imageurl.replace('./', '')}`,
+                uri: `${
+                  config.REACT_APP_API_URL_BILLING
+                }/${gateway.imageurl.replace('./', '')}`,
               }}
               style={styles.gatewayImage}
             />
-            
+
             {selectedGateway === gateway.id && (
               <Text style={styles.tickMark}>&#10003;</Text>
             )}
-             {/* <Text>{config.REACT_APP_API_URL_BILLING}{'/'}{gateway.imageurl.replace('./', '')}</Text> */}
+            {/* <Text>{config.REACT_APP_API_URL_BILLING}{'/'}{gateway.imageurl.replace('./', '')}</Text> */}
           </TouchableOpacity>
-          
         ))}
       </View>
     </View>
@@ -72,9 +75,9 @@ const styles = StyleSheet.create({
   gatewayImage: {
     maxWidth: 100,
     marginBottom: 10,
-    resizeMode:"contain",
-    height:50,
-    width:50
+    resizeMode: 'contain',
+    height: 50,
+    width: 50,
   },
   selected: {
     borderColor: '#285295',

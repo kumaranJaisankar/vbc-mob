@@ -12,7 +12,7 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from 'react-native';
-import {Button, RadioButton} from 'react-native-paper';
+import {Button, RadioButton, useTheme as useMDtheme} from 'react-native-paper';
 import {Colors} from '../../commoncomponents/Colors';
 import Headerview from '../../commoncomponents/HeaderView1';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -36,8 +36,11 @@ import {operations} from '../../redux/Main';
 import Toast from 'react-native-toast-message';
 import {GetUserPlanData} from '../../apiwebservices/APIRequestQueryCreator';
 import apiConfig from '../../apiwebservices/apiConfig';
+import {useTheme} from '@react-navigation/native';
 
 const DashBoard = ({plan, user, navigation}) => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   const [modalVisible, setModalVisible] = React.useState(false);
   console.log('plan.customer_id', plan.customer_id);
   console.log('details', plan);
@@ -626,7 +629,7 @@ const DashBoard = ({plan, user, navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, backgroundColor: Colors.grey_F8F7FD}}>
+      <View style={{flex: 1, backgroundColor: color.background}}>
         <Headerview
           showHeader
           showRefreshIcon
@@ -651,7 +654,7 @@ const DashBoard = ({plan, user, navigation}) => {
               showsHorizontalScrollIndicator={false}>
               <View
                 style={{
-                  backgroundColor: Colors.white,
+                  backgroundColor: materialColor.onSecondary,
                   borderRadius: 10,
                   padding: 20,
                   margin: 20,
@@ -702,7 +705,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               onPress={showButton}
                               uppercase={false}
                               style={{
-                                backgroundColor: Colors.color_5E0F8B,
+                                backgroundColor: materialColor.primary,
                                 width: 120,
                                 marginTop: 10,
                                 borderRadius: 10,
@@ -713,7 +716,7 @@ const DashBoard = ({plan, user, navigation}) => {
                                   fontSize: 12,
                                   fontFamily: 'Titillium-Semibold',
                                   fontWeight: 'normal',
-                                  color: Colors.white,
+                                  color: materialColor.primaryContainer,
                                 }}>
                                 {isShowMore ? 'Change Plan' : 'Show Less'}
                               </Text>
@@ -731,7 +734,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               onPress={showUpgradeButton}
                               uppercase={false}
                               style={{
-                                backgroundColor: Colors.color_5E0F8B,
+                                backgroundColor: materialColor.primary,
                                 width: 120,
                                 marginTop: 10,
                                 borderRadius: 10,
@@ -742,7 +745,7 @@ const DashBoard = ({plan, user, navigation}) => {
                                   fontSize: 12,
                                   fontFamily: 'Titillium-Semibold',
                                   fontWeight: 'normal',
-                                  color: Colors.white,
+                                  color: materialColor.primaryContainer,
                                 }}>
                                 {!upgradeBtn ? 'Upgrade Plans' : 'Show Less'}
                               </Text>
@@ -773,7 +776,7 @@ const DashBoard = ({plan, user, navigation}) => {
                             <Text
                               style={{
                                 fontFamily: 'Titillium-Semibold',
-                                color: Colors.black,
+                                color: color.text,
                                 fontSize: 16,
                                 // marginRight: 10,
                                 marginTop: 5,
@@ -798,7 +801,7 @@ const DashBoard = ({plan, user, navigation}) => {
                             <Text
                               style={{
                                 fontFamily: 'Titillium-Semibold',
-                                color: Colors.black,
+                                color: color.text,
                                 fontSize: 16,
                                 // marginRight: 10,
                                 marginTop: 5,
@@ -838,7 +841,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               <Text
                                 style={{
                                   fontFamily: 'Titillium-Semibold',
-                                  color: '#000000',
+                                  color: color.text,
                                   fontSize: 12,
                                 }}>
                                 Plan Name
@@ -853,7 +856,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               <Text
                                 style={{
                                   fontFamily: 'Titillium-Semibold',
-                                  color: '#000000',
+                                  color: color.text,
                                   fontSize: 12,
                                 }}>
                                 Price
@@ -868,7 +871,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               <Text
                                 style={{
                                   fontFamily: 'Titillium-Semibold',
-                                  color: '#000000',
+                                  color: color.text,
                                   fontSize: 12,
                                 }}>
                                 Speed
@@ -883,7 +886,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               <Text
                                 style={{
                                   fontFamily: 'Titillium-Semibold',
-                                  color: '#000000',
+                                  color: color.text,
                                   fontSize: 12,
                                 }}>
                                 Data Type
@@ -898,7 +901,7 @@ const DashBoard = ({plan, user, navigation}) => {
                               <Text
                                 style={{
                                   fontFamily: 'Titillium-Semibold',
-                                  color: '#000000',
+                                  color: color.text,
                                   fontSize: 12,
                                 }}>
                                 Select

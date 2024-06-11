@@ -55,7 +55,7 @@ const AppProvider = props => {
   const navigationRef = useRef(null);
 
   useEffect(() => {
-    if (props.currentTheme === undefined) {
+    if (props.currentTheme === undefined || props.currentTheme === null) {
       props.updateTheme('System');
     }
     const requestuserPermission = async () => {
@@ -129,7 +129,7 @@ const AppProvider = props => {
     // Clean up the event listener when the component unmounts
     return () => {
       unsubscribe();
-      //   Linking.removeEventListener('url', handleUrl);
+      Linking.removeEventListener('url', handleUrl);
     };
   }, []);
 

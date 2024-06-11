@@ -2,9 +2,51 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Colors} from '../../commoncomponents/Colors';
 import {strings} from '../../strings/i18n';
+import {useTheme as useMDtheme} from 'react-native-paper';
+import {useTheme} from '@react-navigation/native';
 
 const CurrentPlanTable = props => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   const currentPlanData = props.itemdata;
+  const styles = StyleSheet.create({
+    rowContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginTop: 10,
+    },
+    column: {
+      flex: 0.5,
+      height: 50,
+      flexDirection: 'row',
+      marginTop: -10,
+      justifyContent: 'center',
+      borderColor: Colors.grey_A9A9A9,
+      borderWidth: 1,
+    },
+    text: {
+      fontFamily: 'Titillium-Semibold',
+      color: color.text,
+      fontSize: 12,
+      padding: 5,
+      marginTop: 7,
+    },
+    renewButton: {
+      backgroundColor: materialColor.primary,
+      borderRadius: 10,
+      height: 30,
+      marginTop: 7,
+      padding: 5,
+      width: 65,
+      justifyContent: 'center',
+    },
+    buttonText: {
+      fontFamily: 'Titillium-Semibold',
+      color: materialColor.primaryContainer,
+      fontSize: 12,
+      alignSelf: 'center',
+    },
+  });
 
   return (
     <View>
@@ -37,44 +79,5 @@ const CurrentPlanTable = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  rowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  column: {
-    flex: 0.5,
-    height: 50,
-    flexDirection: 'row',
-    marginTop: -10,
-    justifyContent: 'center',
-    borderColor: Colors.grey_A9A9A9,
-    borderWidth: 1,
-  },
-  text: {
-    fontFamily: 'Titillium-Semibold',
-    color: '#000000',
-    fontSize: 12,
-    padding: 5,
-    marginTop: 7,
-  },
-  renewButton: {
-    backgroundColor: Colors.color_5E0F8B,
-    borderRadius: 10,
-    height: 30,
-    marginTop: 7,
-    padding: 5,
-    width: 65,
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontFamily: 'Titillium-Semibold',
-    color: '#ffffff',
-    fontSize: 12,
-    alignSelf: 'center',
-  },
-});
 
 export default CurrentPlanTable;

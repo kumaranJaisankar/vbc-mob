@@ -1,16 +1,53 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
-import { Colors } from '../../commoncomponents/Colors';
-import { strings } from '../../strings/i18n';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Colors} from '../../commoncomponents/Colors';
+import {strings} from '../../strings/i18n';
+import {useTheme as useMDtheme} from 'react-native-paper';
+import {useTheme} from '@react-navigation/native';
 
-const AllPlanTable = (props) => {
+const AllPlanTable = props => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   const [invoiceVisible, setInvoiceVisible] = useState(false);
   const allPlanData = props.itemdata;
+
+  const styles = StyleSheet.create({
+    rowContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginVertical: 5,
+    },
+    column: {
+      flex: 0.5,
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    text: {
+      fontFamily: 'Titillium-Semibold',
+      color: color.text,
+      fontSize: 12,
+    },
+    selectButton: {
+      backgroundColor: materialColor.primary,
+      borderRadius: 10,
+      height: 28,
+      marginTop: 5,
+      padding: 5,
+      width: 50,
+      justifyContent: 'center',
+    },
+    buttonText: {
+      fontFamily: 'Titillium-Semibold',
+      color: materialColor.primaryContainer,
+      fontSize: 12,
+      alignSelf: 'center',
+    },
+    separator: {
+      backgroundColor: Colors.grey_F8F7FD,
+      height: 1,
+      marginTop: 5,
+    },
+  });
 
   return (
     <View>
@@ -19,7 +56,9 @@ const AllPlanTable = (props) => {
           <Text style={styles.text}>{allPlanData.package_name}</Text>
         </View>
         <View style={styles.column}>
-          <Text style={styles.text}>{parseFloat(allPlanData.total_plan_cost)}</Text>
+          <Text style={styles.text}>
+            {parseFloat(allPlanData.total_plan_cost)}
+          </Text>
         </View>
         <View style={styles.column}>
           <Text style={styles.text}>
@@ -42,43 +81,5 @@ const AllPlanTable = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  rowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 5,
-  },
-  column: {
-    flex: 0.5,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  text: {
-    fontFamily: 'Titillium-Semibold',
-    color: '#000000',
-    fontSize: 12,
-  },
-  selectButton: {
-    backgroundColor: Colors.color_5E0F8B,
-    borderRadius: 10,
-    height: 28,
-    marginTop: 5,
-    padding: 5,
-    width: 50,
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontFamily: 'Titillium-Semibold',
-    color: '#ffffff',
-    fontSize: 12,
-    alignSelf: 'center',
-  },
-  separator: {
-    backgroundColor: Colors.grey_F8F7FD,
-    height: 2,
-    marginTop: 5,
-  },
-});
 
 export default AllPlanTable;

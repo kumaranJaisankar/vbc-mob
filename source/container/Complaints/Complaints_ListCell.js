@@ -7,8 +7,12 @@ import Feather from 'react-native-vector-icons/Feather';
 import ComplaintsDetails from './ComplaintsDetails';
 import APIServices from '../../apiwebservices/APIServices';
 import {format} from 'date-fns';
+import {useTheme} from '@react-navigation/native';
+import {useTheme as useMDtheme} from 'react-native-paper';
 
 const UserLogListCell = props => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   var itemData = props.itemdata;
   var formattedDate = format(new Date(itemData.open_date), 'd MMM, yyyy');
   const sheetRef = useRef();
@@ -16,7 +20,7 @@ const UserLogListCell = props => {
   var statusData;
 
   const getColor = status => {
-    if (status == 'Closed') {
+    if (status == 'CLD') {
       return Colors.red_FF0000;
     } else if (status == 'Hold') {
       return Colors.brown_AF8720;
@@ -73,7 +77,7 @@ const UserLogListCell = props => {
           <Text
             style={{
               fontFamily: 'Titillium-Semibold',
-              color: '#000000',
+              color: color.text,
               fontSize: 15,
             }}>
             {itemData.customer_notes}
@@ -89,7 +93,7 @@ const UserLogListCell = props => {
           <Text
             style={{
               fontFamily: 'Titillium-Semibold',
-              color: '#000000',
+              color: color.text,
               fontSize: 14,
               //   marginLeft: 5,
             }}>
@@ -111,7 +115,7 @@ const UserLogListCell = props => {
           <Text
             style={{
               fontFamily: 'Titillium-Semibold',
-              color: '#000000',
+              color: color.text,
               fontSize: 14,
             }}>
             Complaint ID :{' '}
@@ -119,7 +123,7 @@ const UserLogListCell = props => {
           <Text
             style={{
               fontFamily: 'Titillium-Semibold',
-              color: Colors.blue_3F79E9,
+              color: color.primary,
               fontSize: 14,
             }}>
             {itemData.id}
@@ -152,16 +156,16 @@ const UserLogListCell = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 15,
-                // marginLeft: 5,
+                marginRight: 5,
               }}>
               See More
             </Text>
             <FontAwesome
               name={'chevron-circle-right'}
               size={17}
-              color={Colors.blue_3F79E9}
+              color={color.primary}
               style={{
                 marginTop: 3,
                 // marginLeft: 5,

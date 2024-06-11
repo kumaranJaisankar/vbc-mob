@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "291891083350",
+    "project_id": "sparkradiuspushnotifications",
+    "storage_bucket": "sparkradiuspushnotifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291891083350:android:fd4d4e72a54ffe74c823f7",
+        "android_client_info": {
+          "package_name": "sparkradiuscustomerinfo.in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBafG9DoMOPDTMrptQ5dO9CBAhmKvSQ5Ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

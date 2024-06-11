@@ -77,17 +77,17 @@ const DashBoard = ({navigation, user, setPlan}) => {
   const [noDataAvailable, setNoDataAvailable] = React.useState(true);
   const [isPLoading, setPLoading] = React.useState(true);
   // const checkUpdateNeeded = async () => {
-  // try {
-  // const updateNeeded = await VersionCheck.needUpdate({
-  //   forceUpdate: false,
-  //   currentVersion: VersionCheck.getCurrentVersion(),
-  //   latestVersion: '1.11.0',
-  // });
-  // console.log(updateNeeded);
-  // if (updateNeeded && updateNeeded.isNeeded) {
-  //   // setVisible(updateNeeded.isNeeded);
-  //   // setVersionDetails(updateNeeded);
-  // }
+  //   try {
+  //     console.log(VersionCheck.getCurrentVersion());
+
+  //     const updateNeeded = await VersionCheck.needUpdate();
+  //     console.log(updateNeeded);
+  //     if (updateNeeded && updateNeeded.isNeeded) {
+  //       await AsyncStorage.setItem('isUpdate', updateNeeded.isNeeded);
+
+  //       // setVersionDetails(updateNeeded);
+  //       setVisible(updateNeeded.isNeeded);
+  //     }
   //   } catch (error) {
   //     console.error(error);
   //   }
@@ -267,11 +267,11 @@ const DashBoard = ({navigation, user, setPlan}) => {
       <Portal>
         <SafeAreaView style={{flex: 1}}>
           <Portal>
-            <AppUpdate
+            {/* <AppUpdate
               visible={visible}
               hideModal={hideModal}
               versionDetails={versionDetails}
-            />
+            /> */}
           </Portal>
 
           <View style={{flex: 1}}>

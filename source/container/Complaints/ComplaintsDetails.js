@@ -21,8 +21,12 @@ import {Dropdown} from 'react-native-element-dropdown';
 import Toast from 'react-native-toast-message';
 import APIServices from '../../apiwebservices/APIServices';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useTheme} from '@react-navigation/native';
+import {useTheme as useMDtheme} from 'react-native-paper';
 
 const ComplaintsDetails = props => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   const [feedback, setFeedback] = React.useState('');
   const [value, setValue] = React.useState(null);
   const [isFocus, setIsFocus] = React.useState(false);
@@ -166,7 +170,7 @@ const ComplaintsDetails = props => {
     );
   };
   const getColor = status => {
-    if (status == 'Closed') {
+    if (status == 'CLD') {
       return Colors.red_FF0000;
     } else if (status == 'Hold') {
       return Colors.brown_AF8720;
@@ -238,27 +242,28 @@ const ComplaintsDetails = props => {
   return (
     <RBSheet
       ref={sheetRef}
+      closeOnPressBack={true}
+      draggable={true}
       closeOnDragDown={true}
       closeOnPressMask={false}
-      height={650}
+      dragOnContent={true}
+      height={550}
       customStyles={{
-        wrapper: {
-          backgroundColor: 'transparent',
-        },
         container: {
-          borderRadius: 20,
-          backgroundColor: '#ffffff',
+          borderTopEndRadius: 20,
+          borderTopLeftRadius: 20,
+          backgroundColor: materialColor.onSecondary,
           shadowColor: '#000',
           shadowOffset: {
             width: 0,
-            height: -20,
+            height: 1,
           },
           shadowOpacity: 0.22,
           shadowRadius: 2.22,
           elevation: 20,
         },
         draggableIcon: {
-          backgroundColor: '#000',
+          backgroundColor: color.text,
         },
       }}>
       <View style={{padding: 20}}>
@@ -267,7 +272,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
               }}>
               Complaint ID :{' '}
@@ -275,7 +280,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: Colors.blue_3F79E9,
+                color: materialColor.primary,
                 fontSize: 14,
               }}>
               {itemData.id}
@@ -291,7 +296,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
                 marginLeft: 5,
               }}>
@@ -313,7 +318,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
               }}>
               Complaint Type
@@ -336,7 +341,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
                 marginLeft: 5,
               }}>
@@ -358,7 +363,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
               }}>
               Created On
@@ -381,7 +386,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
                 marginLeft: 5,
               }}>
@@ -403,7 +408,7 @@ const ComplaintsDetails = props => {
             <Text
               style={{
                 fontFamily: 'Titillium-Semibold',
-                color: '#000000',
+                color: color.text,
                 fontSize: 14,
                 marginBottom: 6,
               }}>

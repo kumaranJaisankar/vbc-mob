@@ -23,7 +23,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import LogoutDialog from '../commoncomponents/LogoutDialog';
 import VersionCheck from 'react-native-version-check';
-import {Button, Dialog, RadioButton, Text as Txt} from 'react-native-paper';
+import {
+  Button,
+  Dialog,
+  RadioButton,
+  Text as Txt,
+  useTheme as useMDtheme,
+} from 'react-native-paper';
 import {useTheme} from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
@@ -33,6 +39,7 @@ const CustomDrawer = props => {
   const colortheme = useColorScheme();
   const [logoutVisible, setLogoutVisible] = useState(false);
   const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   console.log(' jsdhjshdjhsj');
   console.log(Object.keys(props));
   console.log(props.user.first_name);
@@ -119,15 +126,20 @@ const CustomDrawer = props => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <MaterialIcons name="dark-mode" size={22} color={color.text} />
+            <MaterialIcons
+              name="dark-mode"
+              size={22}
+              color={materialColor.outline}
+            />
             <TouchableOpacity onPress={() => SetThemeing(true)}>
               <View>
                 <Text
                   style={{
                     marginLeft: 10,
-                    color: color.text,
+                    color: materialColor.outline,
                     fontSize: 15,
                     fontWeight: '500',
+                    fontFamily: 'Titillium-Semibold',
                   }}>
                   Dark Theme
                 </Text>
@@ -181,15 +193,16 @@ const CustomDrawer = props => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Ionicons
               name="share-social-outline"
-              size={22}
-              color={color.text}
+              size={23}
+              color={materialColor.outline}
             />
             <Text
               style={{
                 fontWeight: '500',
                 fontSize: 14,
-                color: color.text,
+                color: materialColor.outline,
                 marginLeft: 10,
+                fontFamily: 'Titillium-Semibold',
               }}>
               Refer A Friend
             </Text>
@@ -199,13 +212,18 @@ const CustomDrawer = props => {
           style={{paddingVertical: 10}}
           onPress={() => setLogoutVisible(true)}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Ionicons name="exit-outline" size={22} color={color.text} />
+            <Ionicons
+              name="exit-outline"
+              size={23}
+              color={materialColor.outline}
+            />
             <Text
               style={{
                 fontSize: 14,
-                color: color.text,
+                color: materialColor.outline,
                 marginLeft: 10,
-                fontWeight: '500',
+                // fontWeight: 'bold',
+                fontFamily: 'Titillium-Semibold',
               }}>
               Logout
             </Text>
@@ -229,7 +247,7 @@ const CustomDrawer = props => {
         visible={openTheme}
         dismissable={true}
         onDismiss={() => SetThemeing(false)}>
-        <Dialog.Title ellipsizeMode="middle">Themes</Dialog.Title>
+        <Dialog.Title ellipsizeMode="middle">Choose Theme</Dialog.Title>
         <Dialog.Content>
           <RadioButton.Group
             onValueChange={value => props.updateTheme(value)}

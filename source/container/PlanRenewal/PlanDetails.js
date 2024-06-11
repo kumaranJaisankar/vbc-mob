@@ -22,8 +22,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import APIServices from '../../apiwebservices/APIServices';
 import {convertToTwoDecimals} from '../../utils/NumberConversion';
 import PaymentGatewayOptions from './PaymentGatewayOptions';
+import {useTheme} from '@react-navigation/native';
+import {useTheme as useMDtheme} from 'react-native-paper';
 
 export default PlanDetails = props => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   const [payAmount, setPayAmount] = React.useState();
   const [plan, setPlan] = React.useState({});
   const [planData, setPlanData] = useState([]);
@@ -385,7 +389,7 @@ export default PlanDetails = props => {
 
   if (plan?.package_name) {
     const walletAmountcal = async () => {
-      const res =  customerAmountcalculation(props?.planData?.customer_id);
+      const res = customerAmountcalculation(props?.planData?.customer_id);
     };
 
     React.useEffect(() => {
@@ -395,7 +399,7 @@ export default PlanDetails = props => {
     return (
       <Dialog visible={props.showDialogVisible} width={0.9}>
         <DialogContent
-          style={{padding: 10, backgroundColor: Colors.color_e0e0e0}}>
+          style={{padding: 10, backgroundColor: materialColor.onSecondary}}>
           <View style={{flexDirection: 'column'}}>
             <PlanDetails_Popup_ListData
               showPopupData
@@ -507,7 +511,7 @@ export default PlanDetails = props => {
     return (
       <Dialog visible={props.showDialogVisible} width={0.9}>
         <DialogContent
-          style={{padding: 10, backgroundColor: Colors.color_e0e0e0}}>
+          style={{padding: 10, backgroundColor: materialColor.onSecondary}}>
           <View style={{flexDirection: 'column'}}>
             <PlanDetails_Popup_ListData
               showPopupData
@@ -553,15 +557,16 @@ export default PlanDetails = props => {
                 marginLeft: -10,
               }}>
               <Checkbox
-                color={Colors.black}
+                // color={Colors.black}
                 status={walletAmount ? 'checked' : 'unchecked'}
                 onPress={() => {
+                  console.log(walletAmount);
                   setWalletAmount(!walletAmount);
                 }}
               />
               <Text
                 style={{
-                  color: Colors.black,
+                  color: color.text,
                   fontSize: 14,
                   fontFamily: 'Titillium-Semibold',
                   marginTop: 7,
@@ -580,7 +585,7 @@ export default PlanDetails = props => {
                     marginLeft: -10,
                   }}>
                   <Checkbox
-                    color={Colors.black}
+                    // color={Colors.black}
                     status={staticIp ? 'checked' : 'unchecked'}
                     onPress={() => {
                       setStaticIP(!staticIp);
@@ -588,7 +593,7 @@ export default PlanDetails = props => {
                   />
                   <Text
                     style={{
-                      color: Colors.black,
+                      color: color.text,
                       fontSize: 14,
                       fontFamily: 'Titillium-Semibold',
                       marginTop: 7,
@@ -601,7 +606,7 @@ export default PlanDetails = props => {
                   {staticIp ? (
                     <View>
                       <View>
-                        <Text>Static IP</Text>
+                        <Text style={{color: color.text}}>Static IP</Text>
                         <TextInput
                           mode="outlined"
                           editable={false}
@@ -609,7 +614,7 @@ export default PlanDetails = props => {
                         />
                       </View>
                       <View>
-                        <Text>Static IP Cost</Text>
+                        <Text style={{color: color.text}}>Static IP Cost</Text>
                         <TextInput
                           mode="outlined"
                           editable={false}
@@ -636,12 +641,18 @@ export default PlanDetails = props => {
                 <TouchableOpacity
                   onPress={handleRenewPlan}
                   style={{
-                    backgroundColor: Colors.color_5E0F8B,
+                    backgroundColor: materialColor.primary,
                     borderRadius: 10,
                   }}>
                   <View
                     style={{flexDirection: 'column', padding: 7, width: 100}}>
-                    <Text style={styles.actionButton}>Renew</Text>
+                    <Text
+                      style={[
+                        styles.actionButton,
+                        {color: materialColor.primaryContainer},
+                      ]}>
+                      Renew
+                    </Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -649,12 +660,18 @@ export default PlanDetails = props => {
                 <TouchableOpacity
                   onPress={() => props.closeDialog()}
                   style={{
-                    backgroundColor: Colors.color_5E0F8B,
+                    backgroundColor: materialColor.error,
                     borderRadius: 10,
                   }}>
                   <View
-                    style={{flexDirection: 'column', padding: 7, width: 100}}>
-                    <Text style={styles.actionButton}>Close</Text>
+                    style={{flexDirection: 'column', padding: 7, width: 80}}>
+                    <Text
+                      style={[
+                        styles.actionButton,
+                        {color: materialColor.onError},
+                      ]}>
+                      Close
+                    </Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -668,7 +685,7 @@ export default PlanDetails = props => {
       <Dialog visible={props.showDialogVisible} width={0.9}>
         <ScrollView>
           <DialogContent
-            style={{padding: 10, backgroundColor: Colors.color_e0e0e0}}>
+            style={{padding: 10, backgroundColor: materialColor.onSecondary}}>
             <View style={{flexDirection: 'column'}}>
               <PlanDetails_Popup_ListData
                 showPopupData
@@ -718,7 +735,6 @@ export default PlanDetails = props => {
                   marginLeft: -10,
                 }}>
                 <Checkbox
-                  color={Colors.black}
                   status={walletAmount ? 'checked' : 'unchecked'}
                   onPress={() => {
                     setWalletAmount(!walletAmount);
@@ -726,7 +742,7 @@ export default PlanDetails = props => {
                 />
                 <Text
                   style={{
-                    color: Colors.black,
+                    color: color.text,
                     fontSize: 14,
                     fontFamily: 'Titillium-Semibold',
                     marginTop: 7,
@@ -752,7 +768,6 @@ export default PlanDetails = props => {
                       marginLeft: -10,
                     }}>
                     <Checkbox
-                      color={Colors.black}
                       status={staticIp ? 'checked' : 'unchecked'}
                       onPress={() => {
                         setStaticIP(!staticIp);
@@ -760,7 +775,7 @@ export default PlanDetails = props => {
                     />
                     <Text
                       style={{
-                        color: Colors.black,
+                        color: color.text,
                         fontSize: 14,
                         fontFamily: 'Titillium-Semibold',
                         marginTop: 7,
@@ -773,7 +788,7 @@ export default PlanDetails = props => {
                     {staticIp ? (
                       <View style={{marginBottom: 10}}>
                         <View>
-                          <Text>Static IP</Text>
+                          <Text style={{color: color.text}}>Static IP</Text>
                           <TextInput
                             mode="outlined"
                             editable={false}
@@ -781,7 +796,9 @@ export default PlanDetails = props => {
                           />
                         </View>
                         <View>
-                          <Text>Static IP Cost</Text>
+                          <Text style={{color: color.text}}>
+                            Static IP Cost
+                          </Text>
                           <TextInput
                             mode="outlined"
                             editable={false}
@@ -806,6 +823,7 @@ export default PlanDetails = props => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 flexDirection: 'row',
+                marginTop: 10,
               }}>
               {props?.paymentType === 'change' && (
                 <TouchableOpacity
@@ -815,13 +833,19 @@ export default PlanDetails = props => {
                     backgroundColor:
                       props.data.total_plan_cost === 0
                         ? Colors.grey_E2E2E2
-                        : Colors.color_5E0F8B,
+                        : materialColor.primary,
                     borderRadius: 10,
                   }}
                   disabled={props.data.total_plan_cost === 0}>
                   <View
                     style={{flexDirection: 'column', padding: 7, width: 100}}>
-                    <Text style={styles.actionButton}>Change</Text>
+                    <Text
+                      style={[
+                        styles.actionButton,
+                        {color: materialColor.primaryContainer},
+                      ]}>
+                      Change
+                    </Text>
                   </View>
                 </TouchableOpacity>
               )}
@@ -863,11 +887,17 @@ export default PlanDetails = props => {
               <TouchableOpacity
                 onPress={() => props.closeDialog()}
                 style={{
-                  backgroundColor: Colors.color_5E0F8B,
+                  backgroundColor: materialColor.error,
                   borderRadius: 10,
                 }}>
                 <View style={{padding: 7}}>
-                  <Text style={styles.actionButton}>Close</Text>
+                  <Text
+                    style={[
+                      styles.actionButton,
+                      {color: materialColor.onError},
+                    ]}>
+                    Close
+                  </Text>
                 </View>
               </TouchableOpacity>
             </View>

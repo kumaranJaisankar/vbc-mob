@@ -84,7 +84,7 @@ const SplashScreen = () => {
         <View
           style={{
             flexDirection: 'column',
-            backgroundColor: 'white',
+            backgroundColor: Colors.grey_F8F7FD,
             width: 200,
             height: 200,
             borderRadius: 100,

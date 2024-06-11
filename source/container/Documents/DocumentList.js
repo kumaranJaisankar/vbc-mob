@@ -18,13 +18,18 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import DialogView from '../../commoncomponents/DialogView';
-import {TextInput, Checkbox, RadioButton} from 'react-native-paper';
+import {
+  TextInput,
+  Checkbox,
+  RadioButton,
+  useTheme as useMDtheme,
+} from 'react-native-paper';
 
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Camera from '../../commoncomponents/Camera';
 import styles from './styles';
 import {showMessage} from 'react-native-flash-message';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
 import Toast from 'react-native-toast-message';
 import {connect} from 'react-redux';
@@ -37,6 +42,8 @@ import {
   updateDocumentsListData,
 } from '../../apiwebservices/APIRequestQueryCreator';
 const DocumentList = props => {
+  const color = useTheme().colors;
+  const materialColor = useMDtheme().colors;
   console.log(props?.planData?.customer_id, 'props?.basicData');
   const navigation = useNavigation();
   const [text, setText] = React.useState('');
@@ -402,7 +409,7 @@ const DocumentList = props => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, backgroundColor: Colors.grey_F8F7FD}}>
+      <View style={{flex: 1, backgroundColor: color.background}}>
         <HeaderView1
           showHeader
           // showRefreshIcon
@@ -418,7 +425,7 @@ const DocumentList = props => {
           <View style={{marginTop: -80}}>
             <View
               style={{
-                backgroundColor: Colors.white,
+                backgroundColor: materialColor.onSecondary,
                 borderRadius: 10,
                 padding: 20,
                 margin: 20,
@@ -451,7 +458,7 @@ const DocumentList = props => {
                           <Text
                             style={{
                               fontFamily: 'Titillium-Semibold',
-                              color: Colors.black,
+                              color: color.text,
                               fontSize: 16,
                               // marginRight: 10,
                               marginTop: 5,
@@ -476,7 +483,7 @@ const DocumentList = props => {
                           <Text
                             style={{
                               fontFamily: 'Titillium-Semibold',
-                              color: Colors.black,
+                              color: color.text,
                               fontSize: 16,
                               // marginRight: 10,
                               marginTop: 5,
@@ -552,7 +559,7 @@ const DocumentList = props => {
                         style={{
                           flex: 1,
                           flexDirection: 'column',
-                          backgroundColor: Colors.white,
+                          backgroundColor: materialColor.onSecondary,
                           alignItems: 'center',
                         }}>
                         <View
@@ -629,7 +636,7 @@ const DocumentList = props => {
                         style={{
                           flex: 1,
                           flexDirection: 'column',
-                          backgroundColor: Colors.white,
+                          backgroundColor: materialColor.onSecondary,
                           alignItems: 'center',
                         }}>
                         <View
@@ -717,7 +724,7 @@ const DocumentList = props => {
                         style={{
                           flex: 1,
                           flexDirection: 'column',
-                          backgroundColor: Colors.white,
+                          backgroundColor: materialColor.onSecondary,
                           alignItems: 'center',
                         }}>
                         <View
@@ -802,7 +809,7 @@ const DocumentList = props => {
                         style={{
                           flex: 1,
                           flexDirection: 'column',
-                          backgroundColor: Colors.white,
+                          backgroundColor: materialColor.onSecondary,
                           alignItems: 'center',
                         }}>
                         <View
@@ -889,7 +896,7 @@ const DocumentList = props => {
         <View
           style={{
             height: 60,
-            backgroundColor: '#ffffff',
+            backgroundColor: materialColor.onSecondary,
             //shadowRadius: 2,
             margin: 1,
             // shadowOffset: {
@@ -907,10 +914,10 @@ const DocumentList = props => {
                 style={{
                   flex: 1,
                   fontFamily: 'Titillium-Semibold',
-                  color: '#000000',
+                  color: color.text,
                   fontSize: 14,
                   textAlign: 'center',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: materialColor.onSecondary,
                   borderRadius: 10,
                   padding: 10,
                   borderColor: '#DC631F',
